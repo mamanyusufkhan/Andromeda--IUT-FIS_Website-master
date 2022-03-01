@@ -1,0 +1,67 @@
+<html>
+    {% load static %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700">
+    <link rel="stylesheet" href="{% static 'home.css'%}">
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="\">Andromeda</a>
+          </li>
+         {% if user.is_authenticated %}
+         <li class="nav-item">
+            <a href="#">Discussion</a>
+        </li>
+          {% endif %}
+          <li class="nav-item">
+            <a href="#">Quiz</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Simulation</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">News</a>
+          </li>
+          
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <button class="btn-primary"><a href="/logout">Log Out</a></button>
+          </li>
+          {%else%}
+          <li class="nav-item">
+            <button class="btn-primary"><a href="/login">Sign In</a></button>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+<h1>Register</h1>
+
+<form method="POST" actions="">
+    {% csrf_token %}
+    {{form.first_name.label}}
+    {{form.first_name}}
+    <br>
+    {{form.last_name.label}}
+    {{form.last_name}}
+    <br>
+    {{form.username.label}}
+    {{form.username}}
+    <br>
+    {{form.email.label}}
+    {{form.email}}
+    <br>
+    {{form.password1.label}}
+    {{form.password1}}
+    <br>
+    {{form.password2.label}}
+    {{form.password2}}
+    <br>
+    {{form.errors}}
+
+    <input type="submit" name="Create User">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700">
+    <link rel="stylesheet" href="{% static 'home.css'%}">
+</head>
+<body>
+    <body>
+        <nav>
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="\">Andromeda</a>
+              </li>
+             {% if user.is_authenticated %}
+             <li class="nav-item">
+                <a href="#">Discussion</a>
+            </li>
+              {% endif %}
+              <li class="nav-item">
+                <a href="#">Quiz</a>
+              </li>
+              <li class="nav-item">
+                <a href="#">Simulation</a>
+              </li>
+              <li class="nav-item">
+                <a href="#">News</a>
+              </li>
+              
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <button class="btn-primary"><a href="/logout">Log Out</a></button>
+              </li>
+              {%else%}
+              <li class="nav-item">
+                <button class="btn-primary"><a href="/login">Sign In</a></button>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+    {% for message in messages %}
+        <p id="messages"> {{message}}</p>
+    {% endfor %}
+    <button type="submit"> <a href="/">Home</a></button>
+    <button type="submit"> <a href="/register">SignUp</a></button>
+     <h3>Sign In</h3>
+    <form action="/login/" method="POST">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type = "text" id = "username" name ="username" placeholder="Enter Your Username : " Required>
+        <br>
+        <label for="">Password</label>
+        <input type = "text" id = "password" name = "password" placeholder="Enter your Password : " Required>
+        <br>
+        <button type="submit">Log In</button>
+    </form>
+<script src = "" async defer></script>
+</body>
+</html>
