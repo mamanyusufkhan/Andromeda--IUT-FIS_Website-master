@@ -18,7 +18,7 @@
   
   body {
     font-family: Montserrat, sans-serif;
-    background: var(--clr-gray100);
+   
   }
   
   .nav-list {
@@ -29,17 +29,20 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    
   }
   
   .nav-item {
     list-style: none;
     margin-right: 2rem;
+    color: black;
   }
   
   .nav-item a {
     text-decoration: none;
     color: black;
     transition: all 200ms ease-in;
+    font-size: 30px;
   }
   
   .nav-item a:hover {
